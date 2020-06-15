@@ -24,5 +24,5 @@
 ## Created: 2020-06-13
 
 function ans = f_d (t,y)
-  ans=y-t^2+1;
+  ans=y*cos(t);
 endfunction

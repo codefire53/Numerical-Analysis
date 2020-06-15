@@ -24,12 +24,12 @@
 ## Created: 2020-06-13
 
 function ans = rk4 (t0,y0,h,upper_bound)
-  ans=zeros((upper_bound-t0)/h + 1,2);
+  numberOfSteps = ceil((upper_bound - t0)/h);
   yn=y0;
   tn=t0;
   ans(1,1)=tn;
   ans(1,2)=yn;
-  for i=1:(upper_bound-t0)/h
+  for i=1:numberOfSteps
     k1=h*f_d(tn,yn);
     k2=h*f_d(tn+h/2,yn+k1/2);
     k3=h*f_d(tn+h/2,yn+k2/2);
