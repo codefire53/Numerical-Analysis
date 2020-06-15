@@ -31,11 +31,11 @@ function ans = rk3 (t0,y0,h,upper_bound)
   ans(1,1)=tn;
   ans(1,2)=yn;
   for i=1:numberOfSteps
-    k1=h*f_d(tn,yn);
-    k2=h*f_d(tn+h/2,yn+k1/2);
-    k3=h*f_d(tn+h,yn-k1+2*k2);
+    k1=f_d(tn,yn);
+    k2=f_d(tn+h/2,yn+h*k1/2);
+    k3=f_d(tn+h,yn + h*(-k1+2*k2));
     tn=tn+h;
-    yn=yn+(1/6)*(k1+4*k2+k3);
+    yn=yn+h*(1/6)*(k1+4*k2+k3);
     ans(i+1,1)=tn;
     ans(i+1,2)=yn;
   endfor

@@ -30,12 +30,12 @@ function ans = rk4 (t0,y0,h,upper_bound)
   ans(1,1)=tn;
   ans(1,2)=yn;
   for i=1:numberOfSteps
-    k1=h*f_d(tn,yn);
-    k2=h*f_d(tn+h/2,yn+k1/2);
-    k3=h*f_d(tn+h/2,yn+k2/2);
-    k4=h*f_d(tn+h,yn+k3);
+    k1=f_d(tn,yn);
+    k2=f_d(tn+h/2,yn+h*k1/2);
+    k3=f_d(tn+h/2,yn+h*k2/2);
+    k4=f_d(tn+h,yn+h*k3);
     tn=tn+h;
-    yn=yn+(k1+2*k2+2*k3+k4)/6;
+    yn=yn+h*(k1+2*k2+2*k3+k4)/6;
     disp(h);
     ans(i+1,1)=tn;
     ans(i+1,2)=yn;
